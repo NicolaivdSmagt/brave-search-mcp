@@ -54,8 +54,7 @@ terraform {
 }
 
 provider "aws" {
-  region  = var.brave_mcp_aws_region
-  profile = "work"
+  region = var.brave_mcp_aws_region
 }
 
 # -----------------------------------------------------------------------------

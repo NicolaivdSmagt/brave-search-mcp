@@ -1,0 +1,19 @@
+# ABOUTME: Git ignore for Terraform project.
+# ABOUTME: Excludes state files, secrets, and provider binaries.
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+tfplan
+tfplan-*
+.terraform.lock.hcl
+
+# Secrets -- never commit
+terraform.tfvars
+
+# OS
+.DS_Store
+
+# Claude
+.claude/

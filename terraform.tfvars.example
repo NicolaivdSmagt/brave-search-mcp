@@ -1,0 +1,16 @@
+# ABOUTME: Example variables for the Brave Search MCP AgentCore deployment.
+# ABOUTME: Copy to terraform.tfvars and fill in your values.
+
+# Brave Search API key (get one at https://brave.com/search/api/)
+brave_mcp_api_key = "YOUR_BRAVE_SEARCH_API_KEY"
+
+# ECR container URI for the Brave Search MCP server image
+# See README.md for instructions on pushing the image to ECR.
+brave_mcp_container_uri = "123456789012.dkr.ecr.eu-west-1.amazonaws.com/brave-search-mcp:latest"
+
+# OIDC provider configuration (Auth0, Cognito, Okta, etc.)
+brave_mcp_oidc_discovery_url     = "https://your-tenant.eu.auth0.com/.well-known/openid-configuration"
+brave_mcp_oidc_allowed_audiences = ["https://your-custom-api-identifier"]
+
+# AWS region (must be an AgentCore GA region)
+# brave_mcp_aws_region = "eu-west-1"

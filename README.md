@@ -10,28 +10,28 @@ Deploys [Brave Search](https://brave.com/search/api/) as a remote MCP server on 
                          │   (Auth0,    │
                          │    Okta,     │
                          │    EntraID)  │
-                         └──────┬───────┘
-                             ▲  │
-              DCR, login,    │  │ JWKS
-              token exchange │  │
-                             │  ▼
-┌───────────┐  MCP over  ┌──┴──────────────────────────────────┐
+                         └───────┬──────┘
+                              ▲  │
+               DCR, login,    │  │ JWKS
+               token exchange │  │
+                              │  ▼
+┌───────────┐  MCP over  ┌───┴─────────────────────────────────┐
 │           │  HTTPS +   │  Amazon Bedrock AgentCore            │
 │  Claude   │  Bearer JWT│                                      │
-│  Code     ├───────────►│  Runtime         JWT Authorizer      │
-│           │            │  (serverless,    (validates tokens   │
-│  (MCP +   │◄───────────┤   multi-AZ)      against IdP)       │
-│   OAuth   │  MCP tools │       │                              │
-│   client) │  responses │       │  Workload Identity           │
-│           │            │       │  (auto-managed)              │
-└───────────┘            └───────┼──────────────────────────────┘
-                                 │
-                                 │ HTTPS + API key
-                                 ▼
-                         ┌──────────────┐
-                         │ Brave Search │
-                         │ API          │
-                         └──────────────┘
+│  Code     ├───────────►│  Runtime          JWT Authorizer     │
+│           │            │  (serverless,     (validates tokens  │
+│  (MCP +   │◄───────────┤   multi-AZ)       against IdP)      │
+│   OAuth   │  MCP tools │                                      │
+│   client) │  responses │  Workload Identity (auto-managed)    │
+│           │            │                                      │
+└───────────┘            └──────────────────┬───────────────────┘
+                                            │
+                                            │ HTTPS + API key
+                                            ▼
+                                   ┌──────────────┐
+                                   │ Brave Search │
+                                   │ API          │
+                                   └──────────────┘
 ```
 
 **OAuth flow (first connection):**
